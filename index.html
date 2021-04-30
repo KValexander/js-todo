@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Список задач</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		
+		<header>
+			<div class="content">
+				<h1>Список задач</h1>
+				<a onclick="app.out_tasks(tasks.active, 'active')" style="float: left">Главная</a>
+				<div class="search">
+					<input type="search" placeholder="Поиск" oninput="app.search()">
+				</div>
+				<p>Органайзер для решения задач</p>
+				<div class="button">
+					<input type="button" value="Добавить задачу" onclick="app.out_form()">
+				</div>
+				<nav>
+					<a onclick="app.out_tasks(tasks.active, 'active')">Активные</a> |
+					<a onclick="app.out_tasks(tasks.completed, 'completed')">Выполненные</a>
+				</nav>
+			</div>
+		</header>
+
+		<div id="message"></div>
+
+		<div class="legend">
+			<div class="content">
+				<div class="red">Просрочено</div>
+				<div class="orange">Сегодня</div>
+				<div class="yellow">Завтра</div>
+				<div class="teal">Послезавтра</div>
+				<div class="cyan">Через n дней</div>
+				<div class="green">Завершено</div>
+			</div>
+		</div>
+
+		<div id="app"></div>
+
+	</body>
+</html>

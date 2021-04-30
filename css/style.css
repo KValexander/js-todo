@@ -1,0 +1,221 @@
+@font-face {
+	font-family: Road;
+	src: url("../fonts/road.otf");	
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f5f4f2;
+	font-family: Road;
+	font-size: 14pt;
+}
+
+a {
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:hover {
+	transition: .2s;
+	color: blue;
+}
+
+a:not(:hover) {
+	transition: .2s;
+}
+
+input {
+	height: 40px;
+	border: solid 1px black;
+	padding: 0 10px 0 10px;
+	font-size: 14pt;
+	font-family: Road;
+}
+
+input[type=checkbox] {
+	width: 20px;
+	height: 20px;
+}
+
+input[type=button] {
+	border: none;
+	background-color: #0d6efd;
+	color: white;
+	cursor: pointer;
+}
+
+div.content, div#app, div#message {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 900px;
+}
+
+div#app {
+	margin: 30px auto 30px auto;
+}
+
+div#message {
+	font-size: 20pt;
+}
+
+header {
+	padding: 20px;
+	margin-bottom: 30px;
+	border-top: solid 3px black;
+	border-bottom: solid 3px black;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+}
+
+
+header h1 {
+	float: left;
+}
+
+header div.search {
+	text-align: right;
+	height: 50px;
+}
+
+header div.button {
+	margin-top: 20px;
+	float: left;
+}
+
+header nav {
+	margin-top: 35px;
+	text-align: right;
+}
+
+div.legend div.content div {
+	width: 15.8%;
+	text-align: center;
+	padding: 10px;
+	background-color: white;
+	display: inline-table;
+}
+
+div.red {
+	border: solid 1px #dc3546;
+	border-left: solid 5px #dc3546;
+	color: #dc3546;
+}
+
+div.orange {
+	border: solid 1px #fd7e15;
+	border-left: solid 5px #fd7e15;
+	color: #fd7e15;
+}
+
+div.yellow {
+	border: solid 1px #fec107;
+	border-left: solid 5px #fec107;
+	color: #fec107;
+}
+
+div.teal {
+	border: solid 1px #21c998;
+	border-left: solid 5px #21c998;
+	color: #21c998;
+}
+
+div.cyan {
+	border: solid 1px #17a2b7;
+	border-left: solid 5px #17a2b7;
+	color: #17a2b7;
+}
+
+div.green {
+	border: solid 1px #27a844;
+	border-left: solid 5px #27a844;
+	color: #27a844;
+}
+
+div.add_form {
+	overflow: hidden;
+}
+
+div.add_form h2 {
+	float: left;
+}
+
+form input {
+	width: 100%;
+	margin: 10px 0 10px 0;
+}
+
+div.field input[type=text]{
+	width: 70%;
+}
+
+div.field input[type=button]{
+	width: calc(30% - 11px);
+}
+
+div.tasks {
+	overflow: hidden;
+}
+
+div.tasks h2.left {
+	float: left;
+}
+
+div.tasks h2.right {
+	float: right;
+}
+
+div.task {
+	overflow: hidden;
+	padding: 20px;
+	margin: 20px 0 20px 0;
+	background-color: white;
+	box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+div.task h2 {
+	float: left;
+}
+div.task div.checkbox {
+	text-align: right;
+	height: 40px;
+}
+
+hr {
+	margin: 10px 0 10px 0;
+}
+
+div.task nav.task_menu {
+	float: right;
+}
+
+div.task p {
+	padding: 5px 0 5px 0;
+}
+
+
+div.subtask {
+	padding: 10px;
+	overflow: hidden;
+	margin: 10px 0 10px 0;
+	background-color: #f5f4f2;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.5);
+}
+
+div.subtask h3 {
+	float: left;
+}
+
+div.add_subtask {
+	text-align: right;
+}
+
+
+.textground {
+	padding: 5px;
+	color: white;
+}
