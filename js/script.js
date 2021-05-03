@@ -370,7 +370,7 @@ let app = {
 		tasks.completed.push(tasks.active[i]);
 		// Удаление задачи из массива активных подзадач
 		tasks.active.splice(i, 1);
-		// Запись данных в localStorage
+		// Сохранение данных в localStorage
 		localStorage.setItem("tasks", JSON.stringify(tasks));
 		// Вывод завершённых подзадач
 		app.out_tasks(tasks.completed, "completed");
@@ -378,13 +378,13 @@ let app = {
 
 	// Функция редактирования задачи
 	edit_task: function(i) {
-		// Перемнная проверки наличия инпута в названии задачи
+		// Переменная проверки наличия инпута в названии задачи
 		let check = document.querySelector("#task_"+i+" h2 input");
 		// Перемнная данных ссылки редактирования
 		let edit = document.querySelector("#task_"+i+" #edit_task");
 		// Если инпута нет
 		if (check == null) {
-			// Запись в переменную тега
+			// Запись поля input в переменную
 			out = `<input type="text" placeholder="Задача" value="${tasks.active[i].title}" >`;
 			// Изменения ссылки "редактировать" на "сохранить"
 			edit.innerHTML = "Сохранить";
@@ -393,24 +393,24 @@ let app = {
 			out = check.value;
 			// Изменения ссылки "сохранить" на "редактировать"
 			edit.innerHTML = "Редактировать";
-			// Запись изменённых данных в задачу
+			// Запись изменённых данных в название задачи
 			tasks.active[i].title = check.value;
-			// Запись данных в localStorage
+			// Сохранение данных в localStorage
 			localStorage.setItem("tasks", JSON.stringify(tasks));
 		}
-		// Вывод переменной в название задачи
+		// Вывод данных переменной в название задачи
 		document.querySelector("#task_"+i+" h2").innerHTML = out;
 	},
 
 	// Функция удаления задачи
 	delete_task: function(i) {
-		// Проверка на действительность желания удаления подзадачи
+		// Проверка на действительность желания удаления задачи
 		let result = confirm("Вы действительно хотите удалить задачу?");
 		// Если удалить
 		if(result) {
 			// Удаление задачи из массива активных задач
 			tasks.active.splice(i, 1);
-			// Запись данных в localStorage
+			// Сохранение данных в localStorage
 			localStorage.setItem("tasks", JSON.stringify(tasks));
 			// Вывод активных задач
 			app.out_tasks(tasks.active, "active");
@@ -419,33 +419,52 @@ let app = {
 
 	// Функция выполнения подзадачи
 	completed_subtask: function(i, j) {
+		// Перезапись состояния подзадачи на выполненное
 		tasks.active[i].subtasks[j].state = "completed";
+		// Сохранение данных в localStorage
 		localStorage.setItem("tasks", JSON.stringify(tasks));
+		// Вывод активных задачи
 		app.out_tasks(tasks.active, "active");
 	},
 
 	// Функция редактирования подзадачи
 	edit_subtask: function(i, j) {
+		// Переменная проверки наличия инпута в названии подзадачи
 		let check = document.querySelector("#task_"+i+" #subtask_"+j+" h3 input");
+		// Перемнная данных ссылки редактирования
 		let edit = document.querySelector("#task_"+i+" #subtask_"+j+" #edit_subtask")
+		// Если инпута нет
 		if (check == null) {
+			// Запись поля input в переменную
 			out = `<input type="text" placeholder="Подзадача" value="${tasks.active[i].subtasks[j].title}" >`;
+			// Изменения ссылки "редактировать" на "сохранить"
 			edit.innerHTML = "Сохранить";
+		// Если инпут есть
 		} else {
+			// Запись в переменную значения инпута
 			out = check.value;
+			// Изменения ссылки "сохранить" на "редактировать"
 			edit.innerHTML = "Редактировать";
+			// Запись изменённых данных в название подзачи
 			tasks.active[i].subtasks[j].title = check.value;
+			// Сохранение данных в localStorage
 			localStorage.setItem("tasks", JSON.stringify(tasks));
 		}
+		// Вывод данных переменной в название подзадачи
 		document.querySelector("#task_"+i+" #subtask_"+j+" h3").innerHTML = out;
 	},
 
 	// Функция удаления подзадачи
 	delete_subtask: function(i, j) {
+		// Проверка на действительность желания удаления подзадачи
 		let result = confirm("Вы действительно хотите удалить подзадачу?");
+		// Если удалить
 		if(result) {
+			// Удаление подзадачи из задачи
 			tasks.active[i].subtasks.splice(j, 1);
+			// Сохранение данных в localStorage
 			localStorage.setItem("tasks", JSON.stringify(tasks));
+			// Вывод активных задач
 			app.out_tasks(tasks.active, "active");
 		}
 
@@ -453,14 +472,19 @@ let app = {
 
 	// Функция добавления подзадачи в задачу
 	add_subtask: function(i) {
+		// Переменная количества подзадач задачи
 		let j = document.querySelectorAll("#task_"+i+" .subtask").length;
+		// Объект подзадачи
 		let subtask = {
 			title: "",
 			state: "active",
 		};
+		// Запись объекта подзадачи в задачу
 		tasks.active[i].subtasks.push(subtask);
+		// Сохранение данных в localStorage
 		localStorage.setItem("tasks", JSON.stringify(tasks));
-		out= `
+		// Запись данных в переменную
+		out = `
 			<div class="subtask" id="subtask_${j}">
 				<h3>
 					<input type="text" placeholder="Подзадача" />
@@ -473,6 +497,7 @@ let app = {
 					<a onclick="app.delete_subtask(${i}, ${j})">Удалить</a>
 				</nav>
 			</div> `;
+		// Вывод данных подзадачи в конец задачи
 		document.querySelector("#task_"+i+" .subtasks").insertAdjacentHTML("beforeend", out);
 	},
 
